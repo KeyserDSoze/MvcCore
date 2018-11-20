@@ -50,6 +50,7 @@ namespace MvcCore.WebApp.DependencyInjection.Code
             AMyScopedInjection myScopedInjection                   //Scoped
             )
         {
+            //Set a breakpoint here to see the magic, first step
             Console.WriteLine(mySingletonInjection.Guid);
             Console.WriteLine(myTransientInjection.Guid);
             Console.WriteLine(myScopedInjection.Guid);

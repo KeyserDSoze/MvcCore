@@ -14,10 +14,12 @@ namespace MvcCore.WebApp.DependencyInjection.Controllers
         private IInjectionObserver injectionObserver;
         public HomeController(IInjectionObserver injectionObserver)
         {
+            //Set a breakpoint here to see the magic, second step
             this.injectionObserver = injectionObserver;
         }
         public IActionResult Index()
         {
+            //Set a breakpoint here to see the magic, third step
             return View();
         }
 
