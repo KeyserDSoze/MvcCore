@@ -54,7 +54,6 @@ namespace MvcCore.WebApp.DependencyInjection.Code
             Console.WriteLine(mySingletonInjection.Guid);
             Console.WriteLine(myTransientInjection.Guid);
             Console.WriteLine(myScopedInjection.Guid);
-            string dsak;
         }
     }
 }
