@@ -27,6 +27,7 @@ namespace MvcCore.WebApp.DependencyInjection.Code
         public Guid Guid => Guid.NewGuid();
     }
     public class MyScopedInjection : AMyScopedInjection { }
+    public class PossibleOption { public string Option1 { get; set; } }
     public interface IInjectionObserver { }
     public class InjectionObserver : IInjectionObserver
     {
@@ -41,19 +42,20 @@ namespace MvcCore.WebApp.DependencyInjection.Code
             ILogger<InjectionObserver> logger,                    //Singleton
             ILoggerFactory loggerFactory,                         //Singleton
             ObjectPoolProvider objectPoolProvider,                //Singleton
-            //IConfigureOptions<InjectionObserver> configureOptions,//Transient
-            //IOptions<InjectionObserver> options,                //Singleton
+            IConfigureOptions<InjectionObserver> configureOptions,//Transient
+            IOptions<PossibleOption> options,                     //Singleton
             DiagnosticSource diagnosticSource,                    //Singleton
             DiagnosticListener diagnosticListener,                //Singleton
             MySingletonInjection mySingletonInjection,            //Singleton
-            AMyTransientInjection myTransientInjection,            //Transient
-            AMyScopedInjection myScopedInjection                   //Scoped
+            AMyTransientInjection myTransientInjection,           //Transient
+            AMyScopedInjection myScopedInjection                  //Scoped
             )
         {
             //Set a breakpoint here to see the magic, first step
             Console.WriteLine(mySingletonInjection.Guid);
             Console.WriteLine(myTransientInjection.Guid);
             Console.WriteLine(myScopedInjection.Guid);
+            logger.Log(LogLevel.Critical, "Salute"); //Write in output console
         }
     }
 }
