@@ -32,6 +32,7 @@ namespace MvcCore.WebApp.DependencyInjection.Code
     public class InjectionObserver : IInjectionObserver
     {
         public InjectionObserver(
+            //Standard Dependency Injection
             IApplicationBuilderFactory applicationBuilderFactory, //Transient
             IApplicationLifetime applicationLifetime,             //Singleton
             IHostingEnvironment hostingEnvironment,               //Singleton
@@ -46,6 +47,7 @@ namespace MvcCore.WebApp.DependencyInjection.Code
             IOptions<PossibleOption> options,                     //Singleton
             DiagnosticSource diagnosticSource,                    //Singleton
             DiagnosticListener diagnosticListener,                //Singleton
+            //Custom Dependency injection, you can find it in ConfigureServices in Startup.cs
             MySingletonInjection mySingletonInjection,            //Singleton
             AMyTransientInjection myTransientInjection,           //Transient
             AMyScopedInjection myScopedInjection                  //Scoped

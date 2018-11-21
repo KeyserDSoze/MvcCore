@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <UserSecretsId>aspnet-MvcCore.WebApp-7EF6B14C-F018-4A25-950B-284D2D010556</UserSecretsId>
+    <RootNamespace>MvcCore.WebApp.CustomAuthneticationProvider</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
