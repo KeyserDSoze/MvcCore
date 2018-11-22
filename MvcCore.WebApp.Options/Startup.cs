@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MvcCore.WebApp.Options.Code;
 
 namespace MvcCore.WebApp.Options
 {
@@ -31,6 +32,8 @@ namespace MvcCore.WebApp.Options
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.Configure<OptionRoot>(Configuration);
+            services.Configure<SubOption>(Configuration.GetSection("Subsection"));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

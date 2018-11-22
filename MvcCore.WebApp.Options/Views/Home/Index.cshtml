@@ -1,4 +1,7 @@
-﻿@{
+﻿@using Microsoft.Extensions.Options;;
+@inject IOptions<MvcCore.WebApp.Options.Code.OptionRoot> Root;
+@inject IOptions<MvcCore.WebApp.Options.Code.SubOption> Suboption;
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -15,7 +18,7 @@
                 <p>
                     Learn how to build ASP.NET apps that can run anywhere.
                     <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525028&clcid=0x409">
-                        Learn More
+                        @Root.Value.Option2
                     </a>
                 </p>
             </div>
@@ -26,7 +29,7 @@
                 <p>
                     There are powerful new features in Visual Studio for building modern web apps.
                     <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525030&clcid=0x409">
-                        Learn More
+                        @Suboption.Value.Suboption1
                     </a>
                 </p>
             </div>
