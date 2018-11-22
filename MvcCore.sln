@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01 - MvcCore.WebApp.CustomA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02 - MvcCore.WebApp.DependencyInjection", "MvcCore.WebApp.DependencyInjection\02 - MvcCore.WebApp.DependencyInjection.csproj", "{20901D9D-066F-4351-8731-13E23FC50EC7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03 - MvcCore.WebApp.CustomLog", "MvcCore.WebApp.CustomLog\03 - MvcCore.WebApp.CustomLog.csproj", "{DFFE31B3-D3C7-4B32-ADDA-0D979623A1B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03 - MvcCore.WebApp.CustomLog", "MvcCore.WebApp.CustomLog\03 - MvcCore.WebApp.CustomLog.csproj", "{DFFE31B3-D3C7-4B32-ADDA-0D979623A1B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04 - MvcCore.WebApp.Options", "MvcCore.WebApp.Options\04 - MvcCore.WebApp.Options.csproj", "{1FD02A5B-9961-40DB-A156-679869E84692}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{DFFE31B3-D3C7-4B32-ADDA-0D979623A1B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFFE31B3-D3C7-4B32-ADDA-0D979623A1B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DFFE31B3-D3C7-4B32-ADDA-0D979623A1B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FD02A5B-9961-40DB-A156-679869E84692}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FD02A5B-9961-40DB-A156-679869E84692}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FD02A5B-9961-40DB-A156-679869E84692}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FD02A5B-9961-40DB-A156-679869E84692}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

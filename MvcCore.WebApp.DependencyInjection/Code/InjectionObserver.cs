@@ -43,7 +43,7 @@ namespace MvcCore.WebApp.DependencyInjection.Code
             ILogger<InjectionObserver> logger,                    //Singleton
             ILoggerFactory loggerFactory,                         //Singleton
             ObjectPoolProvider objectPoolProvider,                //Singleton
-            IConfigureOptions<InjectionObserver> configureOptions,//Transient
+            //IConfigureOptions<PossibleOption> configureOptions,   //Transient
             IOptions<PossibleOption> options,                     //Singleton
             DiagnosticSource diagnosticSource,                    //Singleton
             DiagnosticListener diagnosticListener,                //Singleton

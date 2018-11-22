@@ -9,9 +9,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using MvcCore.WebApp.DependencyInjection.Code;
 
-namespace MvcCore.WebApp.DependencyInjection
+namespace MvcCore.WebApp.Options
 {
     public class Startup
     {
@@ -32,11 +31,7 @@ namespace MvcCore.WebApp.DependencyInjection
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddTransient<IInjectionObserver, InjectionObserver>();
-            services.AddSingleton<MySingletonInjection, MySingletonInjection>();
-            services.AddTransient<AMyTransientInjection, MyTransientInjection>();
-            services.AddScoped<AMyScopedInjection, MyScopedInjection>();
-            
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
