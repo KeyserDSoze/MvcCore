@@ -38,6 +38,7 @@ namespace MvcCore.WebApp.CustomLog.ProviderLog
             {
                 var color = Console.ForegroundColor;
                 Console.ForegroundColor = configuration.Color;
+                //See in output window, in ASP .NET Core Web Server
                 Console.WriteLine($"{logLevel.ToString()} - {eventId.Id} - {_name} - {formatter(state, exception)}");
                 Console.ForegroundColor = color;
             }

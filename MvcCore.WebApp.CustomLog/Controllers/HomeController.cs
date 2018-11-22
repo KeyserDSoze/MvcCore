@@ -12,9 +12,10 @@ namespace MvcCore.WebApp.CustomLog.Controllers
     public class HomeController : Controller
     {
         private ILogger logger;
-        public HomeController(ILogger logger)
+
+        public HomeController(ILoggerFactory loggerFactory)
         {
-            this.logger = logger;
+            this.logger = loggerFactory.CreateLogger<CustomLog.ProviderLog.CustomLog>();
         }
         public IActionResult Index()
         {
