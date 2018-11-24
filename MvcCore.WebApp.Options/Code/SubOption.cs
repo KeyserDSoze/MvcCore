@@ -10,4 +10,9 @@ namespace MvcCore.WebApp.Options.Code
         public string Suboption1 { get; set; }
         public string Suboption2 { get; set; }
     }
+    public class SubOption2
+    {
+        public string Suboption3 { get; set; }
+        public string Suboption4 { get; set; }
+    }
 }

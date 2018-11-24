@@ -14,15 +14,21 @@ namespace MvcCore.WebApp.Options.Controllers
     {
         private IOptions<OptionRoot> root;
         private IOptions<SubOption> suboption;
-        public HomeController(IOptions<OptionRoot> root, IOptions<SubOption> suboption)
+        private IOptions<OptionRoot2> root2;
+        private IOptions<SubOption2> suboption2;
+        public HomeController(IOptions<OptionRoot> root, IOptions<SubOption> suboption, IOptions<OptionRoot2> root2, IOptions<SubOption2> suboption2)
         {
             this.root = root;
             this.suboption = suboption;
+            this.root2 = root2;
+            this.suboption2 = suboption2;
         }
         public IActionResult Index()
         {
             var x = this.root.Value.Option1;
             var y = this.suboption.Value.Suboption2;
+            var z = this.root2.Value.Option4;
+            var a = this.suboption2.Value.Suboption3;
             return View();
         }
 

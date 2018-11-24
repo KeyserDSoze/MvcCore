@@ -60,7 +60,7 @@ namespace MvcCore.WebApp.DependencyInjection.Code
             Console.WriteLine(mySingletonInjection.Guid);
             Console.WriteLine(myTransientInjection.Guid);
             Console.WriteLine(myScopedInjection.Guid);
-            logger.Log(LogLevel.Critical, "Salute"); //Write in output console
+            logger.Log(LogLevel.Critical, "Son of a mother"); //Write in output console
         }
     }
 }

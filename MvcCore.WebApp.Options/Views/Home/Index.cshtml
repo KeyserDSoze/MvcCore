@@ -1,8 +1,10 @@
 ﻿@using Microsoft.Extensions.Options;;
 @inject IOptions<MvcCore.WebApp.Options.Code.OptionRoot> Root;
 @inject IOptions<MvcCore.WebApp.Options.Code.SubOption> Suboption;
+@inject IOptions<MvcCore.WebApp.Options.Code.OptionRoot2> Root2;
+@inject IOptions<MvcCore.WebApp.Options.Code.SubOption2> Suboption2;
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = @Root2.Value.Option3;
 }
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
@@ -40,7 +42,7 @@
                 <p>
                     Learn how Microsoft's Azure cloud platform allows you to build, deploy, and scale web apps.
                     <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525027&clcid=0x409">
-                        Learn More
+                        @Suboption2.Value.Suboption4
                     </a>
                 </p>
             </div>
@@ -60,7 +62,7 @@
     <div class="col-md-3">
         <h2>Application uses</h2>
         <ul>
-            <li>Sample pages using ASP.NET Core MVC</li>
+            <li>Sample pages</li>
             <li>Theming using <a href="https://go.microsoft.com/fwlink/?LinkID=398939">Bootstrap</a></li>
         </ul>
     </div>
