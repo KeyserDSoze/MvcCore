@@ -14,6 +14,7 @@ using MvcCore.WebApp.Options.Code;
 
 namespace MvcCore.WebApp.Options
 {
+    //https://docs.microsoft.com/it-it/aspnet/core/fundamentals/configuration/options?view=aspnetcore-2.1
     public class Startup
     {
         public Startup(IConfiguration configuration)
