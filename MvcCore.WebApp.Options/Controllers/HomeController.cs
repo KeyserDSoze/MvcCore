@@ -16,12 +16,20 @@ namespace MvcCore.WebApp.Options.Controllers
         private IOptions<SubOption> suboption;
         private IOptions<OptionRoot2> root2;
         private IOptions<SubOption2> suboption2;
-        public HomeController(IOptions<OptionRoot> root, IOptions<SubOption> suboption, IOptions<OptionRoot2> root2, IOptions<SubOption2> suboption2)
+        public HomeController(IOptions<OptionRoot> root, IOptions<SubOption> suboption,
+                              IOptions<OptionRoot2> root2, IOptions<SubOption2> suboption2,
+                              IOptionsSnapshot<OptionRoot> snapshotRoot, IOptionsSnapshot<SubOption> snapshotSuboption)
         {
             this.root = root;
             this.suboption = suboption;
             this.root2 = root2;
             this.suboption2 = suboption2;
+            //change value in root option
+            this.root.Value.Option1 = "A";
+            //use its snapshot
+            string s = snapshotRoot.Value.Option1;
+            //restore the correct value
+            this.root.Value.Option1 = snapshotRoot.Value.Option1;
         }
         public IActionResult Index()
         {
