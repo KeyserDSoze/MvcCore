@@ -55,9 +55,24 @@ namespace MvcCore.WebApp.Options
             var config = configBuilder.Build();
 
             services.Configure<OptionRoot>(config);
+            //it's possible to configure a dictionary of same configurations
+            services.Configure<OptionRoot>("firstConfig", config);
             services.Configure<SubOption>(config.GetSection("Subsection"));
             services.Configure<OptionRoot2>(config);
             services.Configure<SubOption2>(config.GetSection("Subsection2"));
+            //Creation by delegate of a custom config for OptionRoot called secondConfig
+            services.Configure<OptionRoot>("secondConfig", myDelegatedOptions =>
+            {
+                myDelegatedOptions.Option1 = "delegation creation1";
+                myDelegatedOptions.Option2 = "delegation creation2";
+            });
+            //First get the value from json
+            services.Configure<OptionRoot>("thirdConfig", config);
+            //After replace the value of Option2 with a delegated one.
+            services.PostConfigure<OptionRoot>("thirdConfig", myPostDelegatedOptions =>
+            {
+                myPostDelegatedOptions.Option2 = "post delegation creation 2";
+            });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

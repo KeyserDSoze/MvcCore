@@ -16,6 +16,8 @@ namespace MvcCore.WebApp.Options.Controllers
         private IOptions<SubOption> suboption;
         private IOptions<OptionRoot2> root2;
         private IOptions<SubOption2> suboption2;
+        private IOptionsSnapshot<OptionRoot> snapshotRoot;
+        private IOptionsSnapshot<SubOption> snapshotSuboption;
         public HomeController(IOptions<OptionRoot> root, IOptions<SubOption> suboption,
                               IOptions<OptionRoot2> root2, IOptions<SubOption2> suboption2,
                               IOptionsSnapshot<OptionRoot> snapshotRoot, IOptionsSnapshot<SubOption> snapshotSuboption)
@@ -24,12 +26,23 @@ namespace MvcCore.WebApp.Options.Controllers
             this.suboption = suboption;
             this.root2 = root2;
             this.suboption2 = suboption2;
+            this.snapshotRoot = snapshotRoot;
+            this.snapshotSuboption = snapshotSuboption;
             //change value in root option
             this.root.Value.Option1 = "A";
             //use its snapshot
             string s = snapshotRoot.Value.Option1;
             //restore the correct value
             this.root.Value.Option1 = snapshotRoot.Value.Option1;
+            this.snapshotRoot.Value.Option1 = "BBB";
+            //IOtions is a Singleton value, loaded at app start from settings json and if changed, the changes have repercussions on entire runtime and every next get.
+            //IOptionsSnapshot is a Singleton value, loaded at app start from settings json, it can't change out of this context.
+
+            //Try to get a specific snapshot, preconfigured in Startup.cs with services.Configure<OptionRoot>("firstConfig", config);
+            OptionRoot testRoot = this.snapshotRoot.Get("firstConfig");
+            testRoot.Option1 = "KKKK";
+            OptionRoot testRoot2 = this.snapshotRoot.Get("firstConfig");
+            string t = testRoot2.Option1;
         }
         public IActionResult Index()
         {
