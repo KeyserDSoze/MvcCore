@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using SimpleInjector;
-using SimpleInjector.Lifestyles;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
@@ -17,8 +15,6 @@ namespace MvcCore.WebApp.Middleware
 {
     public class Startup
     {
-        //To use container you must install nuget "SimpleInjector" to customize IMiddlewareFactory
-        private Container container = new Container();
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -43,10 +39,7 @@ namespace MvcCore.WebApp.Middleware
             services.AddTransient<MiddlewareAsService>();
 
             // Replace the default middleware factory with the CustomMiddlewareFactory. To use container you must install nuget "SimpleInjector"
-            services.AddTransient<IMiddlewareFactory>(_ =>
-            {
-                return new CustomMiddlewareFactory(container);
-            });
+            services.AddTransient<IMiddlewareFactory, CustomMiddlewareFactory>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
