@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using SimpleInjector;
+using SimpleInjector.Lifestyles;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
@@ -15,6 +17,8 @@ namespace MvcCore.WebApp.Middleware
 {
     public class Startup
     {
+        //To use container you must install nuget "SimpleInjector" to customize IMiddlewareFactory
+        private Container container = new Container();
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -35,10 +39,19 @@ namespace MvcCore.WebApp.Middleware
             //Configure DI for QuerystringBehaviorMiddleware
             services.Configure<QuerystringBehaviorOptions>(Configuration.GetSection("QuerystringBehaviorOptions"));
 
+            //Configure Middleware with Middleware Factory
+            services.AddTransient<MiddlewareAsService>();
+
+            // Replace the default middleware factory with the CustomMiddlewareFactory. To use container you must install nuget "SimpleInjector"
+            services.AddTransient<IMiddlewareFactory>(_ =>
+            {
+                return new CustomMiddlewareFactory(container);
+            });
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
         /// <summary>
-        /// This method is called for every request and base on chain of responsibility pattern. This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// This method is called first time to register the chain, every request uses this chain (it's based on chain of responsibility pattern). This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         /// </summary>
         /// <Middleware name="Authentication" order="Before HttpContext.User is needed. Terminal for OAuth callbacks.">Provides authentication support.</Middleware>
         /// <Middleware name="Cookie Policy" order="Before middleware that issues cookies. Examples: Authentication, Session, MVC (TempData).">Tracks consent from users for storing personal information and enforces minimum standards for cookie fields, such as secure and SameSite.</Middleware>
@@ -87,6 +100,9 @@ namespace MvcCore.WebApp.Middleware
                 // If you want to add something in the end, you should use another middleware with app.Run
             });
 
+            //Middleware for MiddlewareFactory registration
+            app.UseFactoryActivatedMiddleware();
+
             //I want to set at this point my custom Middleware created in CustomMiddleware
             app.UseQuerystringBehavior();
 
@@ -99,7 +115,7 @@ namespace MvcCore.WebApp.Middleware
             });
 
             //Using run to finalize the chain, if run is never called the chain anyway ends. In HandleIndex you'll find app.Run
-            app.Map("/Index", HandleIndex); //If the request is based on action Index, the final run is in HandleHome and the next run is skipped.
+            app.Map("/Home", HandleIndex); //If the request is based on action Index, the final run is in HandleHome and the next run is skipped.
 
             //MapWhen if you want to check something more complex than path
             app.MapWhen(context => context.Request.Query.ContainsKey("id"),
@@ -109,14 +125,17 @@ namespace MvcCore.WebApp.Middleware
             app.Map("/level1", level1App => {
                 level1App.Map("/level2a", level2AApp => {
                     // "/level1/level2a" processing
+                    Console.WriteLine("level2a in level 1");
                 });
                 level1App.Map("/level2b", level2BApp => {
                     // "/level1/level2b" processing
+                    Console.WriteLine("level2b in level 1");
                 });
             });
 
             app.Run(async context =>
             {
+                Console.WriteLine("This is something else");
                 await context.Response.WriteAsync("<h1>This is something else</h1>");
                 //Do something, for example your custom log, but it's not a best practice to do log here.
                 //You should use ILogger or ILoggerProvider and create your custom provider like in "03 - MvcCore.WebApp.CustomLog" project
@@ -126,6 +145,7 @@ namespace MvcCore.WebApp.Middleware
         {
             app.Run(async context =>
             {
+                Console.WriteLine("This is the Index");
                 await context.Response.WriteAsync("<h1>This is the Index</h1>");
             });
         }
@@ -133,6 +153,7 @@ namespace MvcCore.WebApp.Middleware
         {
             app.Run(async context =>
             {
+                Console.WriteLine("There's an Id");
                 await context.Response.WriteAsync("<h1>There's an Id</h1>");
             });
         }
