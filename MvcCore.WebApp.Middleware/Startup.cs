@@ -38,7 +38,7 @@ namespace MvcCore.WebApp.Middleware
             //Configure Middleware with Middleware Factory
             services.AddTransient<MiddlewareAsService>();
 
-            // Replace the default middleware factory with the CustomMiddlewareFactory. To use container you must install nuget "SimpleInjector"
+            // Replace the default middleware factory with the CustomMiddlewareFactory.
             services.AddTransient<IMiddlewareFactory, CustomMiddlewareFactory>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
