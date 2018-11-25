@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02 - MvcCore.WebApp.Depende
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03 - MvcCore.WebApp.CustomLog", "MvcCore.WebApp.CustomLog\03 - MvcCore.WebApp.CustomLog.csproj", "{DFFE31B3-D3C7-4B32-ADDA-0D979623A1B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04 - MvcCore.WebApp.Options", "MvcCore.WebApp.Options\04 - MvcCore.WebApp.Options.csproj", "{1FD02A5B-9961-40DB-A156-679869E84692}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04 - MvcCore.WebApp.Options", "MvcCore.WebApp.Options\04 - MvcCore.WebApp.Options.csproj", "{1FD02A5B-9961-40DB-A156-679869E84692}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08 - MvcCore.WebApp.Middleware", "MvcCore.WebApp.Middleware\08 - MvcCore.WebApp.Middleware.csproj", "{7D10F2F6-FB23-4537-9858-4AFBBBC7711B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{1FD02A5B-9961-40DB-A156-679869E84692}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1FD02A5B-9961-40DB-A156-679869E84692}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1FD02A5B-9961-40DB-A156-679869E84692}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D10F2F6-FB23-4537-9858-4AFBBBC7711B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D10F2F6-FB23-4537-9858-4AFBBBC7711B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D10F2F6-FB23-4537-9858-4AFBBBC7711B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D10F2F6-FB23-4537-9858-4AFBBBC7711B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
