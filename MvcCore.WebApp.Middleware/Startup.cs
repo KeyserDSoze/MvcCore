@@ -32,6 +32,8 @@ namespace MvcCore.WebApp.Middleware
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            //Configure DI for QuerystringBehaviorMiddleware
+            services.Configure<QuerystringBehaviorOptions>(Configuration.GetSection("QuerystringBehaviorOptions"));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
